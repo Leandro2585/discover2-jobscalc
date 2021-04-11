@@ -1,6 +1,12 @@
 const Database = require('../database/config')
 
 module.exports ={
+  async getOne(id) {
+    const db = await Database()
+    const job = await db.get(`SELECT * FROM jobs WHERE id = ${id}`)
+    await db.close()
+    return job
+  },
   async get() {
     const db = await Database()
 
@@ -45,7 +51,7 @@ module.exports ={
       '${newJob.name}',
       ${newJob.dailyHours},
       ${newJob.totalHours},
-      ${newJob.createdAt},
+      ${newJob.createdAt}
     )`)
     await db.close()
   }

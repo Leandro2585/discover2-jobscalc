@@ -22,7 +22,7 @@
       rel="stylesheet"
     />
 
-    <script src="scripts/index.js" defer type="module"></script>
+    <script src="js/index.js" defer type="module"></script>
   </head>
   <body id="page-index">
     <header class="page-header">
@@ -107,6 +107,12 @@
               <div class="actions column flex">
                 <p class="sr-only">Ações</p>
                 <a
+                  href="/pdf/<%= job.id %>"
+                  class="button white edit"
+                  title="Gerar PDF do Job">
+                  <img src="/images/edit-24.svg" alt="Gerar PDF do Job Job" />
+                </a>
+                <a
                   href="/job/<%= job.id %>"
                   class="button white edit"
                   title="Editar Job">
@@ -117,9 +123,10 @@
                 </button>
               </div>
             </div>
-          <% }) %>
 
           <!-- end card -->
+          <% }) %>
+
         </div>
         <!-- end cards -->
       </main>
@@ -148,6 +155,7 @@
         action="/job/delete"
         id="delete-job"></form>
     </div>
+
     <!-- end modal-wrapper -->
   </body>
 </html>

@@ -9,7 +9,6 @@ module.exports = {
     const jobs = await Job.get()
     const { name, dailyHours, totalHours } = req.body
     await Job.create({
-      id: lastId + 1,
       name,
       dailyHours,
       totalHours,
@@ -26,7 +25,7 @@ module.exports = {
       return res.send('Job not found!')
     }
     job.budget = calculateBudget(profile.valueHour, job.totalHours)
-    return res.render('job-edit')
+    return res.render('job-edit', { job })
   },
   async update(req, res) {
     const { id } = req.params
@@ -48,6 +47,6 @@ module.exports = {
     return res.redirect('/')
   },
   create(req, res) {
-    return res.render('job')
+    return res.render('job.ejs')
   }
 }

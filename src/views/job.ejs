@@ -24,12 +24,12 @@
 
   </head>
   <body id="page-job">
-    <%= include('parts/page-header', { title: 'Adicionar Novo Job' }) %>
+    <%- include('./parts/page-header', { title: 'Adicionar novo job' }) %>
 
 
     <div class="container flex animate-up delay-2">
       <main>
-        <form id="form-job">
+        <form id="form-job" method="POST" action="/job">
           <fieldset>
             <legend>Dados do Job</legend>
             <div class="separator light"></div>
@@ -55,8 +55,8 @@
                   horas para esse Job?</label>
                 <input
                   type="number"
-                  id="totalHours"
-                  name="total-hours" />
+                  id="total-hours"
+                  name="totalHours" />
               </div>
             </div>
           </fieldset>

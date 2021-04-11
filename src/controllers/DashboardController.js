@@ -7,7 +7,7 @@ module.exports = {
   async index(req, res) {
     const jobs = await Job.get()
     const profile = await Profile.get()
-    ket statusCount = {
+    let statusCount = {
       progress: 0,
       done: 0,
       total: jobs.length
@@ -17,10 +17,10 @@ module.exports = {
       const remaining = remainingDays(job)
       const status = remaining <= 0 ? 'done' : 'progress'
       statusCount[status] += 1
-      jobTotalHours = status == 'progress') ? jobTotalHours += Number(job.dailyHours) : jobTotalHours
+      jobTotalHours = (status == 'progress') ? jobTotalHours += Number(job.dailyHours) : jobTotalHours
 
       return {
-        ...job
+        ...job,
         remaining,
         status,
         budget: calculateBudget(profile.valueHour, job.totalHours)

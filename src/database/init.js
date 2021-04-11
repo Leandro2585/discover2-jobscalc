@@ -5,7 +5,7 @@ const initDB = {
     const db = await Database()
 
     await db.exec(`CREATE TABLE profile(
-      id INT PRIMARY KEY AUTOINCREMENT,
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT,
       avatar TEXT,
       monthlyBudget INT,
@@ -13,15 +13,15 @@ const initDB = {
       hoursPerDay INT,
       vacationPerYear INT,
       valueHour INT
-    );`)
+    )`)
 
     await db.exec(`CREATE TABLE jobs(
-      id INT PRIMARY KEY AUTOINCREMENT,
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT,
       dailyHours INT,
       totalHours INT,
-      createdAt DATETIME,
-    );`)
+      createdAt DATETIME
+    )`)
 
     await db.run(`INSERT INTO profile(
       name,
@@ -39,28 +39,34 @@ const initDB = {
       8,
       2,
       22
-    );`)
+    )`)
 
     await db.run(`INSERT INTO jobs(
       name,
       dailyHours,
       totalHours,
-      createdAt,
+      createdAt
     ) VALUES (
       "Site para Pizzaria",
       5,
       30,
       1617514376018
-    ),(
+    )`)
+
+    await db.run(`INSERT INTO jobs(
+      name,
+      dailyHours,
+      totalHours,
+      createdAt
+    ) VALUES (
       "OneTwo Project",
       2,
       43,
       1617514376018
-    );`)
+    )`)
 
     await db.close()
   }
-
 }
 
 initDB.init()
